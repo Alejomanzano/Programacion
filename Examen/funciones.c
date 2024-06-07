@@ -16,7 +16,7 @@ void listarProductos(char productos[][3][40],double precio[],int indice[]){
 void buscarXMarca(char productos[][3][40],double precio[]){
     
     char marca[40];
-    int noexiste =0;
+    int noexiste =1;
     
     printf("Ingresar la marca \n");
     scanf("%s", &marca);
@@ -27,9 +27,9 @@ void buscarXMarca(char productos[][3][40],double precio[]){
         if (strcmp(productos[i][2], marca) == 0)
         {
             printf("%s\t\t%s\t\t%s\t\t%.2lf\n", productos[i][0], productos[i][1], productos[i][2],precio[i]);
-            noexiste =1;
+            noexiste =0;
         }
-        if (noexiste == 0)
+        if (noexiste)
         {
             printf("No existe ningun producto con esa marca\n");
         }
@@ -39,7 +39,7 @@ void buscarXMarca(char productos[][3][40],double precio[]){
 
 void buscarXCategoria(char productos[][3][40],double precio[]){
     char marca[40];
-    int noexiste =0;
+    int noexiste =1;
     
     printf("Ingresar la categoria \n");
     scanf("%s", &marca);
@@ -50,9 +50,9 @@ void buscarXCategoria(char productos[][3][40],double precio[]){
         if (strcmp(productos[i][1], marca) == 0)
         {
             printf("%s\t\t%s\t\t%s\t\t%.2lf\n", productos[i][0], productos[i][1], productos[i][2],precio[i]);
-            noexiste =1;
+            noexiste =0;
         }
-        if (noexiste == 0)
+        if (noexiste)
         {
             printf("No existe ningun producto con esa marca\n");
         }
@@ -63,7 +63,7 @@ void buscarXCategoria(char productos[][3][40],double precio[]){
 
 void buscarXPrecioMenor(char productos[][3][40],double precio[]){
     double preciomaximo;
-    int noexiste =0;
+    int noexiste =1;
     
     printf("Ingresar el precio maximo \n");
     scanf("%lf", &preciomaximo);
@@ -74,9 +74,9 @@ void buscarXPrecioMenor(char productos[][3][40],double precio[]){
         if (precio [i] <= preciomaximo)
         {
             printf("%s\t\t%s\t\t%s\t\t%.2lf\n", productos[i][0], productos[i][1], productos[i][2],precio[i]);
-            noexiste =1;
+            noexiste =0;
         }
-        if (noexiste == 0)
+        if (noexiste)
         {
             printf("No existe ningun producto con esa marca\n");
         }
@@ -92,10 +92,10 @@ void editarProducto(char productos[][3][40],double precio[], int indice[]){
     char marca[40];
     double nuevoprecio;
 
-    listarProductos(char productos,double precio,int indice);
+    listarProductos(productos,precio,indice);
     printf("Ingrese el numero del elemento que desea editar: \n");
     scanf("%i",&num);
-    num --;
+    num--;
     printf("ingrese el nuevo nombre \n");
     scanf("%s", &nombre);
 
@@ -106,13 +106,13 @@ void editarProducto(char productos[][3][40],double precio[], int indice[]){
     scanf("%s", &marca);
 
     printf("ingrese el nuevo precio \n");
-    scanf("%lf", &precio);    
+    scanf("%lf", &nuevoprecio);    
 
     strcpy(productos[num][0], nombre);
     strcpy(productos[num][1], categoria);
     strcpy(productos[num][2], marca);
     precio[num] = nuevoprecio;
-    listarProductos(char productos,double precio,int indice);
+    listarProductos(productos,precio,indice);
 
 }
 
